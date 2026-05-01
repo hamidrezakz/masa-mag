@@ -1,0 +1,10 @@
+{
+  "title": "مبانی فشن",
+  "description": "تاریخچه، مفاهیم پایه و واژه‌نامه فشن",
+  "pages": [
+    "00-intro",
+    "01-history",
+    "02-elements",
+    "03-terminology"
+  ]
+}

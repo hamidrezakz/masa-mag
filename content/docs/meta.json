@@ -1,0 +1,18 @@
+{
+  "title": "مجله فشن ماسا",
+  "description": "مجله جامع آموزش فشن، طراحی لباس و سبک زندگی",
+  "root": true,
+  "pages": [
+    "---مقدمه---",
+    "index",
+    "00-about",
+    "---فصل‌ها---",
+    "01-fashion-basics",
+    "02-design",
+    "03-style",
+    "04-world-fashion",
+    "05-iranian-fashion",
+    "06-industry",
+    "07-sustainable"
+  ]
+}
