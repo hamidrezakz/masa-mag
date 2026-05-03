@@ -1,4 +1,4 @@
-import { getPageImage, source } from "@/lib/source";
+import { source } from "@/lib/source";
 import {
   DocsBody,
   DocsDescription,
@@ -21,7 +21,10 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const markdownUrl = `/llms.mdx/docs/${[...page.slugs, "index.mdx"].join("/")}`;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage
+      toc={page.data.toc}
+      tableOfContent={{ style: "clerk" }}
+      full={page.data.full}>
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className="mb-0">
         {page.data.description}
@@ -59,8 +62,5 @@ export async function generateMetadata(
   return {
     title: page.data.title,
     description: page.data.description,
-    openGraph: {
-      images: getPageImage(page).url,
-    },
   };
 }

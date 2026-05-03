@@ -11,12 +11,33 @@ const vazirmatn = localFont({
   variable: "--font-sans",
 });
 
-const appName = "ماسا";
+const appName = "مجله ماسا";
 const appDescription = "ماسا برگزارکننده دوره های تخصصی طراحی لباس و فشن.";
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH?.trim() ?? "";
+const normalizedBasePath =
+  !rawBasePath || rawBasePath === "/"
+    ? ""
+    : rawBasePath.startsWith("/")
+      ? rawBasePath
+      : `/${rawBasePath}`;
+
+function getMetadataBase(): URL {
+  const url = new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  );
+
+  if (!normalizedBasePath) return url;
+
+  const currentPath = url.pathname.replace(/\/+$/, "") || "";
+  if (currentPath.endsWith(normalizedBasePath)) return url;
+
+  url.pathname = `${currentPath}${normalizedBasePath}`.replace(/\/+/g, "/");
+  return url;
+}
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: getMetadataBase(),
   description: appDescription,
   applicationName: appName,
   keywords: [
